@@ -11,7 +11,7 @@
 
     <ul class="listMovie">
       <li class="listMovie__item" v-for="movie in movies" :key="movie.imdbID">
-        <router-link class="listMovie__link" :to="movie.imdbID">
+        <router-link class="listMovie__link" :to="{ name: 'movie', params: { id: movie.imdbID }}">
           <img class="listMovie__image" :src="movie.Poster" :alt="movie.Title">
           <span class="listMovie__description">
             <p class="listMovie__year">{{movie.Year}}</p>
@@ -34,7 +34,8 @@ export default {
     return {
       loading: false,
       term: '',
-      movies: {}
+      movies: {},
+      query: 's='
     }
   },
   components: {
@@ -42,7 +43,7 @@ export default {
   methods: {
     getMovies() {
       this.loading = true
-      api.get(this.term)
+      api.get(this.query, this.term)
         .then(response => {
           this.movies = response.data.Search
           this.loading = false
