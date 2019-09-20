@@ -1,5 +1,5 @@
 {
-  "name": "marvel-comics",
+  "name": "omdbapi",
   "version": "0.1.0",
   "private": true,
   "scripts": {

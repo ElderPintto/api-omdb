@@ -1,28 +1,31 @@
 <template>
   <main class="home">
     <div class="container">
-      <h1>I like the Movies</h1>
-      <form class="form">
+      <h1>I Lsike the Movies</h1>
+      <form class="form" @submit.prevent="getMovies">
         <input class="form__input form__search" type="search" v-model="term" placeholder="Search Movie">
-        <input class="form__input form__submit" type="submit" @click.prevent="getMovies">
+        <input class="form__input form__submit" type="submit" >
       </form>
 
       <div v-if="loading">
         Carregando...
       </div>
 
-      <ul class="listMovie">
+      <ul class="listMovie" v-if="movies">
         <li class="listMovie__item" v-for="movie in movies" :key="movie.imdbID">
           <router-link class="listMovie__link" :to="{ name: 'movie', params: { id: movie.imdbID }}">
             <img class="listMovie__image" :src="movie.Poster" :alt="movie.Title">
-            <span class="listMovie__description">
-              <p class="listMovie__year">{{movie.Year}}</p>
-              <p class="listMovie__type">{{movie.Type}}</p>
-            </span>
-            <h3 class="listMovie__title">{{movie.Title}}</h3>
+            <div class="listMovie__description">
+              <h3 class="listMovie__title">{{movie.Title}}</h3>   
+              <div class="listMovie__line">
+                <p class="listMovie__year">{{movie.Year}}</p>
+                <p class="listMovie__type">{{movie.Type}}</p>
+              </div>
+            </div>
           </router-link>
         </li>
       </ul>
+      <h2 v-else>No results were found for your search.</h2>
     </div>
   </main>
 </template>
@@ -115,18 +118,53 @@ export default {
 
   .listMovie li {
     text-align: center;
-    padding: 5%;
     transform: scale(0.95);
     transition: ease all 0.3s;
     box-shadow: 0 1px 6px 12px transparent;
   }
 
+  .listMovie li a {
+    position: relative;
+    height: 100%;
+    display: block;
+  }
+
+  .listMovie li:hover .listMovie__description{
+    top: 90%;
+    background: red;
+  }
+  
+
+  .listMovie__description {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: calc(100% - 135px);
+    background: #3b535a;
+    transition: all 300ms;
+    transition-delay: 310ms
+  }
+
+  .listMovie__line {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+
   .listMovie li:hover {
     transform: scale(1);
-
+    z-index: 1;
+  }
+  .listMovie li:hover img{
+    opacity: 0.8;
   }
   .listMovie li img{
     margin: 0 auto;
+    min-height: 445px;
+    object-fit: cover;
+    opacity: 0.1;
+    transition: opacity 300ms
   }
 
   img {
@@ -144,6 +182,12 @@ export default {
   @media screen and (min-width: 768px){
     .listMovie  {
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 1024px){
+    .listMovie  {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 

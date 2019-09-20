@@ -30,6 +30,7 @@ a {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
+  padding-bottom: 200px;
 }
 #nav {
   padding: 30px;
