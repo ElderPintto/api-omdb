@@ -1,21 +1,35 @@
 <template>
   <div id="app">
-    <div id="nav">
-<!--       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> -->
-    </div>
+    <!-- <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div> -->
     <router-view/>
   </div>
 </template>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+body {
+  color: aliceblue;
+  background: #2d3436;
+  font-family: 'Muli', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 40px
+}
+
+a {
+  color: aliceblue;;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: center;
-  color: #2c3e50;
-  background: #fafafa;
 }
 #nav {
   padding: 30px;
