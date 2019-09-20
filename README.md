@@ -1,4 +1,4 @@
-# marvel-comics
+# I like Movies
 
 ## Project setup
 ```

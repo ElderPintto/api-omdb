@@ -1,7 +1,7 @@
 <template>
   <main class="home">
     <div class="container">
-      <h1>I Like the Movies</h1>
+      <h1>I Like Movies</h1>
       <form class="form" @submit.prevent="getMovies">
         <input class="form__input form__search" type="search" v-model="term" placeholder="Search Movie">
         <input class="form__input form__submit" type="submit" >
